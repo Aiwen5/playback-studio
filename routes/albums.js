@@ -17,6 +17,10 @@ router.get('/add-album', (req, res) => {
     res.render('add-album');
 });
 
+router.get('/health', (req, res) => {
+  res.send('Server is running on Vercel!');
+});
+
 router.post('/add-album', async (req, res) => {
     const { title, artist, genre, release_date, description, vinyl_color, image_url } = req.body;
     await db.query(
