@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Playback Studio</title>
-</head>
-<body>
-    <h1>Hello, World!</h1>
-</body>
-</html>
+<section class="album-list">
+    <% albums.forEach(album => { %>
+        <div class="album-card">
+            <a href="/album/<%= album.id %>">
+                <img src="<%= album.image_url %>" alt="<%= album.title %>">
+                <p><%= album.artist %> - <%= album.title %></p>
+            </a>
+        </div>
+    <% }) %>
+</section>

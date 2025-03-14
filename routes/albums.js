@@ -4,13 +4,21 @@ import db from '../db.js';
 const router = express.Router();
 
 router.get('/', async (req, res) => {
-    const albums = await db.query('SELECT * FROM albums ORDER BY id DESC');
-    res.render('index', { albums: albums.rows });
+  const albums = await db.query('SELECT * FROM albums ORDER BY id DESC');
+  res.render('index', { title: "Playback Studio", albums: albums.rows });
 });
 
 router.get('/album/:id', async (req, res) => {
-    const album = await db.query('SELECT * FROM albums WHERE id=$1', [req.params.id]);
-    res.render('album', { album: album.rows[0] });
+  const album = await db.query('SELECT * FROM albums WHERE id=$1', [req.params.id]);
+  
+  if (album.rows.length === 0) {
+      return res.status(404).send('Album not found');
+  }
+
+  res.render('album', {
+      title: album.rows[0].title, // Dynamically set the title
+      album: album.rows[0]
+  });
 });
 
 router.get('/add-album', (req, res) => {
