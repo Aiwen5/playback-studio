@@ -36,3 +36,4 @@ pnpm-lock.yaml
 
 # Ignore history tracking files
 .history/
+.vercel

@@ -8,4 +8,6 @@ const pool = new pg.Pool({
   ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false
 });
 
+console.log("DB_URL from ENV:", process.env.DB_URL);
+
 export default pool;
