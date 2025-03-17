@@ -33,7 +33,7 @@ router.post('/add-album', async (req, res) => {
     const { title, artist, genre, release_date, description, vinyl_color, image_url } = req.body;
     await db.query(
         `INSERT INTO albums (title, artist, genre, release_date, description, vinyl_color, image_url)
-         VALUES ($1, $2, $3, $4, $5, $6, $7)`,
+        VALUES ($1, $2, $3, $4, $5, $6, $7)`,
         [title, artist, genre, release_date, description, vinyl_color, image_url]
     );
     res.redirect('/');
