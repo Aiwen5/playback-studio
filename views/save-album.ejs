@@ -1,0 +1,16 @@
+<div class="save-album-container">
+  <div class="save-album-thumbnail">
+    <img src="<%= metadata.image_url %>" alt="Album Cover">
+  </div>
+  <div class="save-album-form">
+    <form action="/add-album" method="POST">
+      <input type="hidden" name="youtube_link" value="<%= metadata.youtube_url || '' %>">
+      <input type="text" name="title" value="<%= metadata.title %>" placeholder="Album Title" required>
+      <input type="text" name="artist" value="<%= metadata.artist %>" placeholder="Artist Name" required>
+      <input type="date" name="release_date" value="<%= metadata.releaseDate %>" required>
+      <textarea name="description" placeholder="Description"></textarea>
+      <input type="hidden" name="image_url" value="<%= metadata.image_url %>">
+      <button type="submit">Save</button>
+    </form>
+  </div>
+</div>
