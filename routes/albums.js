@@ -8,9 +8,33 @@ dotenv.config();
 const router = express.Router();
 
 function extractYouTubeID(url) {
-    const regex = /(?:youtu\.be\/|youtube\.com\/(?:.*v=|.*\/)([^#&?]*))/;
-    const match = url.match(regex);
-    return match && match[1] ? match[1] : null;
+    console.log("extractYouTubeID received URL:", url);
+
+    if (!url || typeof url !== "string") {
+        console.error("extractYouTubeID received an invalid or undefined URL.");
+        return null;
+    }
+
+    try {
+        // Attempt to parse URL using the URL constructor
+        const parsedUrl = new URL(url);
+        const videoId = parsedUrl.searchParams.get("v");
+
+        if (videoId) {
+            return videoId;
+        }
+
+        // Handle shortened youtu.be links
+        const pathnameParts = parsedUrl.pathname.split("/");
+        if (pathnameParts.length > 1) {
+            return pathnameParts[1]; // Extract video ID from path
+        }
+    } catch (error) {
+        console.error("Error parsing YouTube URL:", error);
+    }
+
+    console.error("Invalid YouTube URL format:", url);
+    return null;
 }
 
 async function fetchYouTubeMetadata(videoId) {
@@ -35,7 +59,7 @@ async function fetchYouTubeMetadata(videoId) {
           title: snippet.title,
           artist: snippet.channelTitle,  // Approximate artist name
           releaseDate: snippet.publishedAt.split("T")[0],
-          thumbnail: snippet.thumbnails?.high?.url || ""
+          image_url: snippet.thumbnails?.high?.url || ""
       };
   } catch (error) {
       console.error("Error fetching YouTube metadata:", error);
@@ -78,21 +102,58 @@ router.post('/fetch-metadata', async (req, res) => {
       return res.status(500).send("Error fetching metadata");
   }
 
-  res.render('save-album', { title: "Save to Collection", metadata });
-});
-
-router.get('/health', (req, res) => {
-  res.send('Server is running on Vercel!');
+  res.render('save-album', { 
+      title: "Save to Collection", 
+      metadata: { 
+          youtube_url: youtubeUrl, 
+          video_id: videoId, 
+          ...metadata 
+      } 
+  });
 });
 
 router.post('/add-album', async (req, res) => {
-    const { title, artist, genre, release_date, description, vinyl_color, image_url } = req.body;
-    await db.query(
-        `INSERT INTO albums (title, artist, genre, release_date, description, vinyl_color, image_url)
-        VALUES ($1, $2, $3, $4, $5, $6, $7)`,
-        [title, artist, genre, release_date, description, vinyl_color, image_url]
-    );
-    res.redirect('/');
+  console.log("Received form data:", req.body); // Debugging step
+
+  let { youtube_url, title, artist, release_date, description, vinyl_color, image_url } = req.body;
+
+  try {
+      if (!youtube_url) {
+          console.error("ERROR: youtube_url is missing from request body.");
+          return res.status(400).send("YouTube URL is required.");
+      }
+
+      console.log("Extracting YouTube ID from URL:", youtube_url);
+      const videoId = extractYouTubeID(youtube_url);
+
+      if (!videoId) {
+          console.error("ERROR: Extracted YouTube ID is null.");
+          throw new Error("Invalid YouTube URL provided.");
+      }
+
+      console.log("YouTube Video ID:", videoId);
+
+      // Fetch metadata if image_url is missing
+      if (!image_url) {
+          const metadata = await fetchYouTubeMetadata(videoId);
+          title = title || metadata?.title;
+          artist = artist || metadata?.artist;
+          release_date = release_date || metadata?.releaseDate;
+          image_url = metadata?.image_url;
+      }
+
+      // Insert into DB
+      await db.query(
+          `INSERT INTO albums (title, artist, release_date, description, vinyl_color, image_url)
+          VALUES ($1, $2, $3, $4, $5, $6)`,
+          [title, artist, release_date, description, vinyl_color, image_url]
+      );
+
+      res.redirect('/');
+  } catch (error) {
+      console.error("Error saving album:", error);
+      res.status(500).send("Error saving album: " + error.message);
+  }
 });
 
 export default router;
