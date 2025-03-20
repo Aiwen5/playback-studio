@@ -115,16 +115,16 @@ router.post('/fetch-metadata', async (req, res) => {
 router.post('/add-album', async (req, res) => {
   console.log("Received form data:", req.body); // Debugging step
 
-  let { youtube_url, title, artist, release_date, description, vinyl_color, image_url } = req.body;
+  let { youtube_link, title, artist, release_date, description, vinyl_color, image_url } = req.body;
 
   try {
-      if (!youtube_url) {
-          console.error("ERROR: youtube_url is missing from request body.");
+      if (!youtube_link) {
+          console.error("ERROR: youtube_link is missing from request body.");
           return res.status(400).send("YouTube URL is required.");
       }
 
-      console.log("Extracting YouTube ID from URL:", youtube_url);
-      const videoId = extractYouTubeID(youtube_url);
+      console.log("Extracting YouTube ID from URL:", youtube_link);
+      const videoId = extractYouTubeID(youtube_link);
 
       if (!videoId) {
           console.error("ERROR: Extracted YouTube ID is null.");
@@ -142,11 +142,11 @@ router.post('/add-album', async (req, res) => {
           image_url = metadata?.image_url;
       }
 
-      // Insert into DB
+      // Insert into DB with youtube_link
       await db.query(
-          `INSERT INTO albums (title, artist, release_date, description, vinyl_color, image_url)
-          VALUES ($1, $2, $3, $4, $5, $6)`,
-          [title, artist, release_date, description, vinyl_color, image_url]
+          `INSERT INTO albums (title, artist, release_date, description, vinyl_color, image_url, youtube_link)
+          VALUES ($1, $2, $3, $4, $5, $6, $7)`,
+          [title, artist, release_date, description, vinyl_color, image_url, youtube_link]
       );
 
       res.redirect('/');
