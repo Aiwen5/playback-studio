@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title || "Playback Studio" %></title>
-    <link rel="stylesheet" href="/css/globals.css">
-    <link rel="stylesheet" href="/css/album-card.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title><%= typeof title !== 'undefined' ? title : "Playback Studio" %></title>
+        <link rel="stylesheet" href="/css/globals.css">
+        <link rel="stylesheet" href="/css/album-card.css">
+    </head>
 <body>
     <header>
         <h1>Playback Studio</h1>
