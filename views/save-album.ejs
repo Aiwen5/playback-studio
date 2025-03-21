@@ -11,12 +11,16 @@
   <div class="save-album-form">
     <form action="/add-album" method="POST">
       <input type="hidden" name="youtube_link" value="<%= metadata.youtube_url || '' %>">
+      <p class="input-header">Album title *</p>
       <input type="text" name="title" value="<%= metadata.title %>" placeholder="Album Title" required>
+      <p class="input-header">Artist name *</p>
       <input type="text" name="artist" value="<%= metadata.artist %>" placeholder="Artist Name" required>
+      <p class="input-header">Release date *</p>
       <input type="date" name="release_date" value="<%= metadata.releaseDate %>" required>
+      <p class="input-header">Description</p>
       <textarea name="description" placeholder="Description"></textarea>
       <input type="hidden" name="image_url" value="<%= metadata.image_url %>">
-      <button type="submit">Save</button>
+      <button class="save-btn" type="submit">Save</button>
     </form>
   </div>
 </div>
