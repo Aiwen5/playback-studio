@@ -1,0 +1,24 @@
+<div class="album-page">
+  <header>
+    <a class="anchor" href="/"><h1 class="medium-wordmark">Playback Studio</h1></a>
+  </header>
+    <div class="album-content">
+        <div class="album-image">
+            <% if (album.image_url) { %>
+                <img src="<%= album.image_url %>" alt="Album Cover">
+            <% } %>
+        </div>
+        <div class="album-details">
+            <p class="release-date">Release Date - <%= album.release_date.toISOString().split('T')[0] %></p>
+            <h1 class="album-title"><%= album.title %></h1>
+            <h2 class="album-artist"><%= album.artist %></h2>
+            <p class="album-description"><%= album.description || 'No description available' %></p>
+
+            <% if (album.youtube_link) { %>
+                <a href="<%= album.youtube_link %>" class="youtube-button" target="_blank">
+                    ▶ Listen on YouTube
+                </a>
+            <% } %>
+        </div>
+    </div>
+</div>

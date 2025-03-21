@@ -1,9 +1,9 @@
 :root {
   /* Light Mode Colors */
   --green-primary: #315638;
-  --green-secondary: #7c957e;
+  --green-secondary: #fffeef;
   --off-white: #fffeef;
-  --black: #235735;
+  --contrast: #235735;
 
   --white: #ffffff;
   --red: #ad281e;
@@ -14,7 +14,15 @@
   --pink: #d5529d;
 
   /* Font Size */
-  --font-size-h1: 11rem;
+  --large-wordmark: 11rem;
+  --medium-wordmark: 6rem;
+  --small-wordmark: 4rem;
+
+  --large-heading: 5.5rem;
+  --medium-heading: 3rem;
+  --small-heading: 2rem;
+
+  --body-copy: 1rem;
 }
 
 /* Dark Mode Colors */
@@ -23,7 +31,7 @@
     --green-primary: #a4c3a2;
     --green-secondary: #7c957e;
     --off-white: #07150c;
-    --black: #fffef6;
+    --contrast: #fffef6;
 
     --white: #ffffff;
     --red: #ad281e;
@@ -37,17 +45,18 @@
 
 /* Fonts */
 @font-face {
-  font-family: 'PPRightSerif-TallRegular';
-  src: url('/fonts/PPRightSerif-TallRegular.otf') format('opentype');
+  font-family: "PPRightSerif-TallRegular";
+  src: url("/fonts/PPRightSerif-TallRegular.otf") format("opentype");
 }
 
 body {
   font-family: "space grotesk", sans-serif;
   background-color: var(--off-white);
-  color: var(--black);
+  color: var(--contrast);
   text-align: center;
   min-height: 100dvh;
-  margin: 0;
+  margin: 0 8rem;
+  font-size: var(--body-copy);
   display: flex;
   flex-direction: column;
 }
@@ -56,17 +65,9 @@ main {
   flex: 1;
 }
 
-header h1 {
-  font-family: 'PPRightSerif-TallRegular', serif;
-  font-size: var(--font-size-h1);
-  font-weight: normal; 
-  text-align: left;
-  color: var(--black);
-}
-
-
 footer {
   margin-top: auto;
+  border-top: var(--contrast) 0.5px solid;
 }
 
 .album-list {
@@ -74,5 +75,4 @@ footer {
   flex-wrap: wrap;
   justify-content: center;
   gap: 27px;
-  padding: 20px;
 }

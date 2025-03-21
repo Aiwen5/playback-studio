@@ -33,12 +33,12 @@
 
 input,
 textarea {
-  color: var(--black);
+  color: var(--contrast);
 }
 
 .save-album-form button {
   background-color: var(--green-primary);
-  color: var(--black);
+  color: var(--contrast);
   padding: 10px 15px;
   border: none;
   cursor: pointer;

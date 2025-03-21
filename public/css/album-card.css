@@ -11,7 +11,8 @@
   height: 200px;
   object-fit: cover;
   object-position: center;
-  border-radius: 3px;
+  border-radius: 2px;
+  border: var(--contrast) 0.5px solid;
 }
 
 .album-card h2 {
@@ -21,7 +22,7 @@
 
 .album-card p {
   font-size: 14px;
-  color: var(--black);
+  color: var(--contrast);
   text-wrap: wrap;
 }
 

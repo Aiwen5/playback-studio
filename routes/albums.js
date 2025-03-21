@@ -16,7 +16,6 @@ function extractYouTubeID(url) {
     }
 
     try {
-        // Attempt to parse URL using the URL constructor
         const parsedUrl = new URL(url);
         const videoId = parsedUrl.searchParams.get("v");
 
@@ -24,7 +23,7 @@ function extractYouTubeID(url) {
             return videoId;
         }
 
-        // Handle shortened youtu.be links
+        // Handle shortened youtube links
         const pathnameParts = parsedUrl.pathname.split("/");
         if (pathnameParts.length > 1) {
             return pathnameParts[1]; // Extract video ID from path
@@ -73,16 +72,26 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/album/:id', async (req, res) => {
-  const album = await db.query('SELECT * FROM albums WHERE id=$1', [req.params.id]);
-  
-  if (album.rows.length === 0) {
-      return res.status(404).send('Album not found');
-  }
+  try {
+    console.log(`Fetching album with ID: ${req.params.id}`);
 
-  res.render('album', {
-      title: album.rows[0].title, // Dynamically set the title
+    const album = await db.query('SELECT * FROM albums WHERE id=$1', [req.params.id]);
+
+    if (album.rows.length === 0) {
+      console.error(`Album with ID ${req.params.id} not found`);
+      return res.status(404).send('Album not found');
+    }
+
+    console.log("Retrieved Album:", album.rows[0]);
+
+    res.render('album', {
+      title: album.rows[0].title,
       album: album.rows[0]
-  });
+    });
+  } catch (error) {
+    console.error("Error fetching album:", error);
+    res.status(500).send("Error retrieving album details");
+  }
 });
 
 router.get('/add-album', (req, res) => {
