@@ -32,7 +32,8 @@
             form.insertBefore(errorMessage, input);
 
             form.addEventListener("submit", function (event) {
-                const youtubePattern = /^(https?:\/\/)?(www\.)?(youtube\.com\/watch\?v=|youtu\.be\/)[a-zA-Z0-9_-]{11}$/;
+              // Regex to allow youtube video and playlist-style links
+              const youtubePattern = /^(https?:\/\/)?(www\.)?(youtube\.com\/watch\?v=[a-zA-Z0-9_-]{11}(&list=[a-zA-Z0-9_-]+(&index=\d+)?)?|youtu\.be\/[a-zA-Z0-9_-]{11})$/;
                 if (!youtubePattern.test(input.value.trim())) {
                     event.preventDefault(); // Prevent form submission
                     input.style.border = "0.5px solid #E74C3C";
