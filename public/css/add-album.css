@@ -26,7 +26,7 @@
   display: inline-flex;
   text-align: center;
   background-color: transparent;
-  border: 1px solid var(--contrast);
+  border: 0.5px solid var(--contrast);
   border-radius: 2px;
   padding: 15px 16px;
   width: 100%;

@@ -12,7 +12,7 @@
 <body>
     <div class="container">
         <h1 class="heading">Add To Collection</h1>
-        <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.</p>
+        <p class="description">Find the album you want to add to your collection on YouTube, then copy and paste the link into the input field below!</p>
         <img src="/images/vinyl.png" class="vinyl-image" alt="Vinyl Record">
         <form class="input-form" action="/fetch-metadata" method="POST">
             <input class="input-container" type="text" name="youtubeUrl" placeholder="What's the YouTube link to the album?" required>
@@ -26,7 +26,7 @@
             const errorMessage = document.createElement("p");
             errorMessage.textContent = "YouTube link entered is invalid :(";
             errorMessage.style.color = "#E74C3C";
-            errorMessage.style.marginBottom = "5px";
+            errorMessage.style.marginBottom = "-13px";
             errorMessage.style.display = "none";
             errorMessage.style.textAlign = "left";
             form.insertBefore(errorMessage, input);
@@ -35,7 +35,7 @@
                 const youtubePattern = /^(https?:\/\/)?(www\.)?(youtube\.com\/watch\?v=|youtu\.be\/)[a-zA-Z0-9_-]{11}$/;
                 if (!youtubePattern.test(input.value.trim())) {
                     event.preventDefault(); // Prevent form submission
-                    input.style.border = "1px solid #E74C3C";
+                    input.style.border = "0.5px solid #E74C3C";
                     errorMessage.style.display = "block";
                     input.focus();
                 } else {

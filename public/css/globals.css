@@ -56,6 +56,7 @@ body {
   text-align: center;
   min-height: 100dvh;
   margin: 0 8rem;
+  margin-bottom: 4rem;
   font-size: var(--body-copy);
   display: flex;
   flex-direction: column;
@@ -66,8 +67,14 @@ main {
 }
 
 footer {
-  margin-top: auto;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
   border-top: var(--contrast) 0.5px solid;
+  margin-top: auto;
+  background-color: var(--off-white);
 }
 
 .album-list {
