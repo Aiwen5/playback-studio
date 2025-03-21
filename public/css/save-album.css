@@ -7,12 +7,32 @@
 }
 
 .save-album-thumbnail img {
-  max-width: 400px;
+  max-width: 562px;
   width: 100%;
-  height: 400px;
+  height: 562px;
   object-fit: cover;
   object-position: center;
   border-radius: 10px;
+}
+
+.input-header {
+  text-align: left;
+  margin: 0;
+  margin-bottom: 0.5rem;
+}
+
+.save-btn {
+  display: flex;
+  justify-content: left;
+  background-color: var(--contrast);
+  color: var(--off-white);
+  padding: 15px 40px;
+  font-size: 1rem;
+  border-radius: 2px;
+  border: none;
+  text-decoration: none;
+  transition: background 0.3s;
+  cursor: pointer;
 }
 
 .save-album-form {
@@ -26,23 +46,14 @@
   width: 100%;
   padding: 10px;
   margin-bottom: 15px;
-  border: 1px solid #ccc;
+  border: 0.5px solid var(--contrast);
   background: none;
-  border-radius: 5px;
+  border-radius: 2px;
 }
 
 input,
 textarea {
-  color: var(--black);
-}
-
-.save-album-form button {
-  background-color: var(--green-primary);
-  color: var(--black);
-  padding: 10px 15px;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
+  color: var(--contrast);
 }
 
 .save-album-form button:hover {

@@ -1,0 +1,32 @@
+.large-wordmark {
+  font-family: "PPRightSerif-TallRegular", serif;
+  font-size: var(--large-wordmark);
+  font-weight: normal;
+  text-align: left;
+  margin-top: 4rem;
+  margin-bottom: 0;
+  color: var(--contrast);
+}
+
+.cta {
+  display: flex;
+  justify-content: right;
+  margin-bottom: 3rem;
+}
+
+.btn {
+  margin-top: 20px;
+  display: inline-flex;
+  align-items: right;
+  background-color: var(--contrast);
+  color: var(--off-white);
+  padding: 15px 40px;
+  font-size: 1rem;
+  border-radius: 2px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background-color: var(--green-primary);
+}

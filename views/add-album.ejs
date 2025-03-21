@@ -1,4 +1,49 @@
-<form action="/fetch-metadata" method="POST">
-  <input type="text" name="youtubeUrl" placeholder="Paste YouTube link here" required>
-  <button type="submit">Fetch Album Details</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/add-album.css">
+    <title>Add Album</title>
+</head>
+<header>
+  <a class="anchor" href="/"><h1 class="small-wordmark">Playback Studio</h1></a>
+</header>
+<body>
+    <div class="container">
+        <h1 class="heading">Add To Collection</h1>
+        <p class="description">Find the album you want to add to your collection on YouTube, then copy and paste the link into the input field below!</p>
+        <img src="/images/vinyl.png" class="vinyl-image" alt="Vinyl Record">
+        <form class="input-form" action="/fetch-metadata" method="POST">
+            <input class="input-container" type="text" name="youtubeUrl" placeholder="What's the YouTube link to the album?" required>
+            <button class="submit-btn" type="submit">SUBMIT</button>
+        </form>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.querySelector("form");
+            const input = document.querySelector(".input-container");
+            const errorMessage = document.createElement("p");
+            errorMessage.textContent = "YouTube link entered is invalid :(";
+            errorMessage.style.color = "#E74C3C";
+            errorMessage.style.marginBottom = "-13px";
+            errorMessage.style.display = "none";
+            errorMessage.style.textAlign = "left";
+            form.insertBefore(errorMessage, input);
+
+            form.addEventListener("submit", function (event) {
+                const youtubePattern = /^(https?:\/\/)?(www\.)?(youtube\.com\/watch\?v=|youtu\.be\/)[a-zA-Z0-9_-]{11}$/;
+                if (!youtubePattern.test(input.value.trim())) {
+                    event.preventDefault(); // Prevent form submission
+                    input.style.border = "0.5px solid #E74C3C";
+                    errorMessage.style.display = "block";
+                    input.focus();
+                } else {
+                    input.style.border = "";
+                    errorMessage.style.display = "none";
+                }
+            });
+        });
+    </script>
+</body>
+</html>

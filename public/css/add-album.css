@@ -1,0 +1,86 @@
+.small-wordmark {
+  font-family: "PPRightSerif-TallRegular", serif;
+  font-size: var(--small-wordmark);
+  font-weight: normal;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  color: var(--contrast);
+  text-decoration: none;
+}
+
+.heading {
+  font-size: var(--large-heading);
+  font-weight: bold;
+  margin: 0;
+}
+
+.description {
+  margin-bottom: 4rem;
+}
+
+.anchor {
+  text-decoration: none;
+}
+
+.input-container {
+  display: inline-flex;
+  text-align: center;
+  background-color: transparent;
+  border: 0.5px solid var(--contrast);
+  border-radius: 2px;
+  padding: 15px 16px;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.input-form {
+  max-width: 790px;
+  margin: 0 auto;
+}
+
+.input-container:focus,
+.input-container:focus-visible {
+  outline: none;
+}
+
+.input-container:placeholder-shown {
+  color: var(--contrast);
+}
+
+.submit-btn {
+  margin-top: 20px;
+  margin-left: 6px;
+  display: inline-flex;
+  align-items: right;
+  background-color: var(--contrast);
+  color: var(--off-white);
+  padding: 15px 40px;
+  font-size: 1rem;
+  border-radius: 2px;
+  border: none;
+  text-decoration: none;
+  transition: background 0.3s;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: var(--green-primary);
+}
+
+@keyframes rotateVinyl {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.vinyl-image {
+  max-width: 224px;
+  width: 100%;
+  height: auto;
+  margin-bottom: 4rem;
+  animation: rotateVinyl 5s linear infinite;
+}

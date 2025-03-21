@@ -1,0 +1,85 @@
+.medium-wordmark {
+  font-family: "PPRightSerif-TallRegular", serif;
+  font-size: var(--medium-wordmark);
+  font-weight: normal;
+  text-align: left;
+  margin-top: 4rem;
+  margin-bottom: 1rem;
+  color: var(--contrast);
+}
+
+.anchor {
+  text-decoration: none;
+}
+
+.album-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 20px;
+  padding-top: 1rem;
+}
+
+.album-image {
+  flex: 0 0 40%;
+  display: flex;
+  justify-content: right;
+  align-items: right;
+}
+
+.album-image img {
+  max-width: 562px;
+  width: 100%;
+  height: 562px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 2px;
+  border: var(--contrast) 0.5px solid;
+}
+
+.album-details {
+  flex: 0 0 60%;
+  padding-left: 40px;
+  text-align: left;
+  color: var(--contrast);
+}
+
+.album-title {
+  font-size: var(--large-heading);
+  font-weight: bold;
+  margin: 0;
+}
+
+.album-artist {
+  font-size: 1.5rem;
+  opacity: 0.56;
+  margin-top: 0;
+  margin-bottom: 4rem;
+}
+
+.album-description {
+  margin-bottom: 4rem;
+}
+
+.release-date {
+  font-size: 1rem;
+  margin-bottom: 4rem;
+}
+
+.youtube-button {
+  margin-top: 20px;
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--contrast);
+  color: var(--off-white);
+  padding: 15px 40px;
+  font-size: 1rem;
+  border-radius: 2px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.youtube-button:hover {
+  background-color: var(--green-primary);
+}
