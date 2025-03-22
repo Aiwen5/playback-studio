@@ -11,7 +11,6 @@
 .heading {
   font-size: var(--large-heading);
   font-weight: bold;
-  margin: 0;
 }
 
 .description {
@@ -52,7 +51,7 @@
   margin-top: 20px;
   margin-left: 6px;
   display: inline-flex;
-  align-items: right;
+  align-items: center; /* Center align items */
   background-color: var(--contrast);
   color: var(--off-white);
   padding: 15px 40px;
@@ -83,4 +82,38 @@
   height: auto;
   margin-bottom: 4rem;
   animation: rotateVinyl 5s linear infinite;
+}
+
+@media (max-width: 1200px) {
+  .input-container {
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 992px) {
+  .input-container {
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .submit-btn {
+    margin-left: 0;
+    margin-top: 15px;
+  }
+
+  .input-container {
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 576px) {
+  .submit-btn {
+    margin-left: 0;
+    margin-top: 15px;
+  }
+
+  .input-container {
+    max-width: 230px;
+  }
 }

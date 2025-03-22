@@ -30,3 +30,14 @@
 .btn:hover {
   background-color: var(--green-primary);
 }
+
+@media (max-width: 768px) {
+  .large-wordmark {
+    text-align: center;
+  }
+  .cta {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}

@@ -1,6 +1,6 @@
 :root {
   /* Light Mode Colors */
-  --green-primary: #315638;
+  --green-primary: #0d2512;
   --green-secondary: #fffeef;
   --off-white: #fffeef;
   --contrast: #235735;
@@ -82,4 +82,76 @@ footer {
   flex-wrap: wrap;
   justify-content: center;
   gap: 27px;
+}
+
+/* Breakpoints for font sizes */
+@media (max-width: 1200px) {
+  :root {
+    --large-wordmark: 9rem;
+    --medium-wordmark: 5rem;
+    --small-wordmark: 3rem;
+
+    --large-heading: 4.5rem;
+    --medium-heading: 2.5rem;
+    --small-heading: 1.5rem;
+
+    --body-copy: 0.9rem;
+  }
+
+  body {
+    margin: 0 6rem;
+    margin-bottom: 3rem;
+  }
+}
+
+@media (max-width: 992px) {
+  :root {
+    --large-wordmark: 7rem;
+    --medium-wordmark: 4rem;
+    --small-wordmark: 2.5rem;
+
+    --large-heading: 3.5rem;
+    --medium-heading: 2rem;
+    --small-heading: 1.25rem;
+
+    --body-copy: 0.9rem;
+  }
+
+  body {
+    margin: 0 4rem;
+    margin-bottom: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --large-wordmark: 7rem;
+    --medium-wordmark: 4rem;
+    --small-wordmark: 2.5rem;
+
+    --large-heading: 2.5rem;
+    --medium-heading: 1.5rem;
+    --small-heading: 1rem;
+
+    --body-copy: 0.9rem;
+  }
+}
+
+@media (max-width: 576px) {
+  :root {
+    --large-wordmark: 7rem;
+    --medium-wordmark: 4rem;
+    --small-wordmark: 2.5rem;
+
+    --large-heading: 1.5rem;
+    --medium-heading: 1rem;
+    --small-heading: 0.75rem;
+
+    --body-copy: 0.9rem;
+  }
+
+  body {
+    margin: 0 2rem;
+    margin-bottom: 3rem;
+  }
 }
