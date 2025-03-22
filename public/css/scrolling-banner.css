@@ -15,7 +15,7 @@
 
 .scrolling-banner {
     display: flex;
-    width: 200%; /* Ensures no gaps */
+    width: 200%; 
     animation: scrollLeft 30s linear infinite;
 }
 
@@ -26,7 +26,6 @@
     color: var(--contrast);
 }
 
-/* Keyframes for seamless scrolling */
 @keyframes scrollLeft {
     from {
         transform: translateX(0);
