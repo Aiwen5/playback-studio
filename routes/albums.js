@@ -79,7 +79,7 @@ router.get('/album/:id', async (req, res) => {
 
     if (album.rows.length === 0) {
       console.error(`Album with ID ${req.params.id} not found`);
-      return res.status(404).send('Album not found');
+      return res.status(404).render('error', { title: 'Album Not Found', message: 'The album you are looking for does not exist.' });
     }
 
     console.log("Retrieved Album:", album.rows[0]);
