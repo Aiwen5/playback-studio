@@ -1,0 +1,37 @@
+.scrolling-banner-container {
+    width: 100vw;
+    overflow: hidden;
+    background: var(--off-white);
+    padding: 10px 0;
+    border-top: 1px solid var(--contrast);
+    border-bottom: 1px solid var(--contrast);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+}
+
+.scrolling-banner {
+    display: flex;
+    width: 200%; /* Ensures no gaps */
+    animation: scrollLeft 30s linear infinite;
+}
+
+.scrolling-text {
+    white-space: nowrap;
+    font-size: 16px;
+    font-weight: regular;
+    color: var(--contrast);
+}
+
+/* Keyframes for seamless scrolling */
+@keyframes scrollLeft {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
