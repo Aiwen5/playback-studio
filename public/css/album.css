@@ -52,7 +52,7 @@
 }
 
 .album-artist {
-  font-size: 1.5rem;
+  font-size: var(--h2);
   opacity: 0.56;
   margin-top: 0;
   margin-bottom: 4rem;
@@ -64,7 +64,7 @@
 
 .release-date {
   font-size: 1rem;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
 }
 
 .youtube-button {
