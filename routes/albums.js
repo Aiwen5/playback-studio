@@ -165,4 +165,18 @@ router.post('/add-album', async (req, res) => {
   }
 });
 
+router.delete('/albums/:id', async (req, res) => {
+    const albumId = req.params.id;
+    try {
+      const result = await db.query('DELETE FROM albums WHERE id = $1', [albumId]);
+      if (result.rowCount === 0) {
+        return res.status(404).send('Album not found');
+      }
+      res.redirect('/?deleted=true');
+    } catch (error) {
+      console.error('Error deleting album:', error);
+      res.status(500).send('Error deleting album');
+    }
+});
+
 export default router;

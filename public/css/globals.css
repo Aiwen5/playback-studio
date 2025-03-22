@@ -82,8 +82,30 @@ footer {
 .album-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 27px;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.toast {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  background-color: var(--red);
+  color: var(--contrast);
+  padding: 16px 24px;
+  border-radius: 4px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease, transform 0.3s ease;
+  transform: translateX(-50%) translateY(-20px);
+  font-weight: bold;
+  z-index: 999;
+}
+
+.toast.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
 }
 
 /* Breakpoints for font sizes */
@@ -138,6 +160,10 @@ footer {
     --h2: 1.2rem;
 
     --body-copy: 0.9rem;
+  }
+
+  .album-list {
+    justify-content: center;
   }
 }
 

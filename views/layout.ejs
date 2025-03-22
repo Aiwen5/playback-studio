@@ -26,7 +26,7 @@
 
 </head>
 <body>
-  <%- include('partials/scrolling-banner') %>
+    <%- include('partials/scrolling-banner') %>
     <header>
         
     </header>
@@ -38,5 +38,19 @@
     <footer>
         <p>© Playback Studio 2025</p>
     </footer>
+
+<div id="toast" class="toast">Album deleted successfully</div>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('deleted') === 'true') {
+        const toast = document.getElementById('toast');
+        toast.classList.add('show');
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 3000);
+        }
+    });
+</script>
 </body>
 </html>
