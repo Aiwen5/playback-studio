@@ -68,7 +68,6 @@
 }
 
 .youtube-button {
-  margin-top: 20px;
   display: inline-flex;
   align-items: center;
   background-color: var(--contrast);
@@ -82,6 +81,44 @@
 
 .youtube-button:hover {
   background-color: var(--green-primary);
+}
+
+.album-buttons {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.delete-btn {
+  background-color: var(--red);
+  color: #fffeef;
+  border: none;
+  padding: 16px 0;
+  font-size: 1rem;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: width 0.3s ease;
+  white-space: nowrap;
+  width: 45px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.delete-btn:hover {
+  width: 160px;
+}
+
+.delete-btn::before {
+  content: "✕";
+  transition: opacity 0.2s ease;
+}
+
+.delete-btn:hover::before {
+  content: "Remove album";
 }
 
 @media (max-width: 1200px) {
@@ -147,5 +184,9 @@
   .album-description,
   .release-date {
     margin-bottom: 1rem;
+  }
+
+  .youtube-button {
+    padding: 15px 20px;
   }
 }

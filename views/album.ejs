@@ -13,12 +13,91 @@
             <h1 class="album-title"><%= album.title %></h1>
             <h2 class="album-artist"><%= album.artist %></h2>
             <p class="album-description"><%= album.description || 'No description available' %></p>
-
-            <% if (album.youtube_link) { %>
+            <div class="album-buttons">
+              <% if (album.youtube_link) { %>
                 <a href="<%= album.youtube_link %>" class="youtube-button" target="_blank">
                     ▶ Listen on YouTube
                 </a>
-            <% } %>
+              <% } %>
+              <form action="/albums/<%= album.id %>?_method=DELETE" method="POST" class="delete-form" onsubmit="return confirmAndRedirect(event)">
+                <button type="submit" class="delete-btn"></button>
+              </form>
+            </div>
         </div>
     </div>
 </div>
+<script>
+  function confirmAndRedirect(event) {
+    event.preventDefault();
+    const form = event.target;
+
+    const confirmOverlay = document.createElement('div');
+    confirmOverlay.style.position = 'fixed';
+    confirmOverlay.style.top = 0;
+    confirmOverlay.style.left = 0;
+    confirmOverlay.style.width = '100%';
+    confirmOverlay.style.height = '100%';
+    confirmOverlay.style.backgroundColor = 'rgba(0, 0, 0, 0.6)';
+    confirmOverlay.style.display = 'flex';
+    confirmOverlay.style.alignItems = 'center';
+    confirmOverlay.style.justifyContent = 'center';
+    confirmOverlay.style.zIndex = '999';
+    confirmOverlay.style.opacity = '0';
+    confirmOverlay.style.transition = 'opacity 0.3s ease';
+
+    const confirmBox = document.createElement('div');
+    confirmBox.style.backgroundColor = 'var(--off-white)';
+    confirmBox.style.padding = '30px';
+    confirmBox.style.borderRadius = '2px';
+    confirmBox.style.textAlign = 'center';
+
+    const message = document.createElement('p');
+    message.innerHTML = 'Are you sure you want to delete this album?<br>This action cannot be undone.';
+    message.style.marginBottom = '20px';
+    message.style.color = 'var(--contrast)';
+
+    const confirmBtn = document.createElement('button');
+    confirmBtn.textContent = 'Yes, delete';
+    confirmBtn.style.marginRight = '10px';
+    confirmBtn.style.padding = '10px 20px';
+    confirmBtn.style.backgroundColor = 'var(--red)';
+    confirmBtn.style.color = '#fffeef';
+    confirmBtn.style.border = 'none';
+    confirmBtn.style.borderRadius = '2px';
+    confirmBtn.style.cursor = 'pointer';
+
+    const cancelBtn = document.createElement('button');
+    cancelBtn.textContent = 'Cancel';
+    cancelBtn.style.padding = '10px 20px';
+    cancelBtn.style.border = 'none';
+    cancelBtn.style.backgroundColor = 'var(--contrast)';
+    cancelBtn.style.color = 'var(--off-white)';
+    cancelBtn.style.borderRadius = '2px';
+    cancelBtn.style.cursor = 'pointer';
+
+    cancelBtn.onclick = () => {
+      confirmOverlay.style.opacity = '0';
+      setTimeout(() => {
+        document.body.removeChild(confirmOverlay);
+      }, 300);
+    };
+    confirmBtn.onclick = () => {
+      confirmOverlay.style.opacity = '0';
+      setTimeout(() => {
+        document.body.removeChild(confirmOverlay);
+        sessionStorage.setItem('showToast', 'true');
+        form.submit();
+      }, 300);
+    };
+
+    confirmBox.appendChild(message);
+    confirmBox.appendChild(confirmBtn);
+    confirmBox.appendChild(cancelBtn);
+    confirmOverlay.appendChild(confirmBox);
+    document.body.appendChild(confirmOverlay);
+    
+    setTimeout(() => {
+      confirmOverlay.style.opacity = '1';
+    }, 10);
+  }
+</script>
