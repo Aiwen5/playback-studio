@@ -1,0 +1,50 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title || 'Error' %></title>
+  <link rel="stylesheet" href="/css/globals.css">
+</head>
+<style>
+  .error-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    background-color: var(--contrast);
+    color: var(--off-white);
+    padding: 15px 40px;
+    font-size: 1rem;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: background 0.3s;
+  }
+
+  .error-msg {
+    font-size: var(--body-copy);
+    margin-top: 0;
+  }
+
+  .page-heading {
+    font-size: var(--large-heading);
+    margin-bottom: 1rem;
+  }
+</style>
+<body>
+  <section class="error-container">
+    <h1 class="page-heading"><%= title || 'Something Went Wrong' %></h1>
+    <p class="error-msg"><%= message || 'Sorry, we couldn’t find the page you were looking for.' %></p>
+    <a class="btn" href="/">← Back to Home</a>
+  </section>
+</body>
+</html>
