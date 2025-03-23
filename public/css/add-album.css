@@ -113,7 +113,26 @@
     margin-top: 15px;
   }
 
+  .small-wordmark {
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+  }
+
+  .heading {
+    margin-bottom: 1rem;
+  }
+
+  .description {
+    margin-bottom: 2rem;
+    margin-top: 0;
+  }
+
   .input-container {
     max-width: 230px;
+  }
+
+  .vinyl-image {
+    max-width: 150px;
+    margin-bottom: 2rem;
   }
 }

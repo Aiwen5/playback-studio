@@ -28,6 +28,7 @@
   padding: 15px 40px;
   font-size: 1rem;
   border-radius: 2px;
+  margin-bottom: 2rem;
   border: none;
   text-decoration: none;
   transition: background 0.3s;
@@ -44,6 +45,7 @@
 .save-album-form textarea {
   width: 100%;
   padding: 10px;
+  padding-right: 0;
   margin-bottom: 15px;
   border: 0.5px solid var(--contrast);
   background: none;
@@ -53,6 +55,10 @@
 input,
 textarea {
   color: var(--contrast);
+}
+
+.textarea {
+  min-height: 200px;
 }
 
 .save-album-form button:hover {

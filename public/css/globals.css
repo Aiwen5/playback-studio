@@ -164,6 +164,7 @@ footer {
 
   .album-list {
     justify-content: center;
+    gap: 5px;
   }
 }
 
@@ -173,9 +174,9 @@ footer {
     --medium-wordmark: 4rem;
     --small-wordmark: 2.5rem;
 
-    --large-heading: 1.5rem;
-    --medium-heading: 1rem;
-    --small-heading: 0.75rem;
+    --large-heading: 2.5rem;
+    --medium-heading: 1.5rem;
+    --small-heading: 1rem;
 
     --body-copy: 0.9rem;
   }

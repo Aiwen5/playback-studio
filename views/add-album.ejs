@@ -32,7 +32,7 @@
             form.insertBefore(errorMessage, input);
 
             form.addEventListener("submit", function (event) {
-              // Regex to allow youtube video and playlist-style links
+              // Regex to only allow youtube video and playlist-style links
               const youtubePattern = /^(https?:\/\/)?(www\.)?(youtube\.com\/watch\?v=[a-zA-Z0-9_-]{11}(&list=[a-zA-Z0-9_-]+(&index=\d+)?)?|youtu\.be\/[a-zA-Z0-9_-]{11})$/;
                 if (!youtubePattern.test(input.value.trim())) {
                     event.preventDefault(); // Prevent form submission
