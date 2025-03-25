@@ -33,10 +33,10 @@
 
             form.addEventListener("submit", function (event) {
               // Regex to only allow youtube video and playlist-style links
-              const youtubePattern = /^(https?:\/\/)?(www\.)?(youtube\.com\/watch\?v=[a-zA-Z0-9_-]{11}(&list=[a-zA-Z0-9_-]+(&index=\d+)?)?|youtu\.be\/[a-zA-Z0-9_-]{11})$/;
+            const youtubePattern = /^(https?:\/\/)?(www\.)?(youtube\.com\/watch\?v=[\w-]{11}(&[\w-]+=[\w-]*)*|youtu\.be\/[\w-]{11}(\?[\w-]+=[\w-]*)*)$/;
                 if (!youtubePattern.test(input.value.trim())) {
                     event.preventDefault(); // Prevent form submission
-                    input.style.border = "0.5px solid #E74C3C";
+                    input.style.border = "0.5px solid var(--red)";
                     errorMessage.style.display = "block";
                     input.focus();
                 } else {
